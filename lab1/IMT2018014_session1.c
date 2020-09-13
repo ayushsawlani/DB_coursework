@@ -118,9 +118,7 @@ int save_struct_binary( char *fileName )
     struct student arr[5]={{1,  "sawlani",  10},  {2,  "panda",  20},  {3,  "gaurav",  30},  {4,  "miiya",  40},  {5,  "bongoli",  50}};
     for(int i=0;i<5;i++)
     {
-        fwrite(&arr[i].Roll_no,  sizeof(int),  1,  ptr);
-        fwrite(arr[i].Name,  sizeof(char [30]),  1,  ptr);
-        fwrite(&arr[i].Age,  sizeof(int),  1,  ptr);
+        fwrite(&arr[i],  sizeof(struct student),  1,  ptr);
     }
     fclose(ptr);
     return 0;
@@ -136,9 +134,7 @@ int read_struct_binary( char *fileName )
     struct student stu;
     for(int i=0;i<5;i++)
     {
-        fread(&stu.Roll_no,   sizeof(int),   1,   ptr);
-        fread(stu.Name,   sizeof(char [30]),   1,   ptr);
-        fread(&stu.Age,   sizeof(int),   1,   ptr);
+        fread(&stu,   sizeof(struct student),   1,   ptr);
         printf("%d %s %d\n",   stu.Roll_no,   stu.Name,   stu.Age);
     }
     fclose(ptr);
